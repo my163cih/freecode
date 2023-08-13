@@ -1,11 +1,18 @@
-import AuthModal from '@/components/modals/AuthModal';
-import Navbar from '@/components/navbar/Navbar';
-import Image from 'next/image';
-import React from 'react';
+'use client'
+import React from 'react'
+import Image from 'next/image'
+import { useRecoilValue } from 'recoil'
+
+
+import { authModalState } from '@/atoms/authModalAtom'
+import AuthModal from '@/components/modals/AuthModal'
+import Navbar from '@/components/navbar/Navbar'
 
 type AuthPageProps = {};
 
 const AuthPage: React.FC<AuthPageProps> = () => {
+  const authModal = useRecoilValue(authModalState)
+
   return (
     <div className='bg-gradient-to-b from-black to-gray-200 h-screen relative'>
       <div className='max-w-7xl mx-auto'>
@@ -14,10 +21,10 @@ const AuthPage: React.FC<AuthPageProps> = () => {
           <Image src='/hero2.png' alt='' width={500} height={250} />
           <Image src='/tech_companies.png' alt='' width={700} height={400} />
         </div>
-        <AuthModal />
+        {authModal.isOpen && <AuthModal />}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default AuthPage;
+export default AuthPage
