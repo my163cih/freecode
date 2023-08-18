@@ -70,7 +70,6 @@ const ProblemTable: React.FC<ProblemTableProps> = () => {
           </div>
         </tfoot>
       )}
-
     </>
   )
 }
